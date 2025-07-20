@@ -181,4 +181,48 @@ alemeno-credit/
 
 ---
 
+## Running the Project with Docker
+
+### 1. Build and Start All Services
+Run this command from the project root:
+```sh
+docker-compose up --build
+```
+This will build the images (if needed) and start:
+- Django web server (API)
+- Celery worker (background tasks)
+- PostgreSQL database
+- Redis broker
+
+### 2. Access the API
+- By default, the Django API will be available at: [http://localhost:8000](http://localhost:8000)
+- You can test endpoints using Postman, curl, or your browser (for GET requests).
+
+### 3. Stopping the Project
+To stop all running containers:
+```sh
+docker-compose down
+```
+
+### 4. Running in the Background (Detached Mode)
+```sh
+docker-compose up -d --build
+```
+To stop:
+```sh
+docker-compose down
+```
+
+### 5. Running Management Commands
+To run Django management commands (like migrations or shell):
+```sh
+docker-compose exec web python /app/credit_system/manage.py <command>
+```
+Example:
+```sh
+docker-compose exec web python /app/credit_system/manage.py migrate
+```
+
+---
+
  
